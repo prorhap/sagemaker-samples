@@ -1,0 +1,23 @@
+[project]
+name = "hello-mnist"
+version = "1.0.0"
+description = "SageMaker managed PyTorch training job example (MNIST) — async launch per the '장시간 Job & 콘솔 실행 가이드'"
+requires-python = ">=3.10,<3.13"
+
+# 로컬(내 노트북)에서만 필요한 의존성.
+# torch / torchvision 같은 학습 프레임워크는 여기에 넣지 않습니다.
+# → 실제 학습은 AWS Deep Learning Container(DLC) 안에서 돌고, torch는 이미 그 안에 있습니다.
+dependencies = [
+    "sagemaker>=3.0",
+    "boto3>=1.34",
+]
+
+[dependency-groups]
+# uv run --group dev ...  로 쓰는 개발 편의 도구 (선택)
+dev = [
+    "ruff>=0.6",
+]
+
+[tool.uv]
+# 재현성: 잠금 파일(uv.lock) 기준으로 정확히 동일한 버전 설치
+package = false

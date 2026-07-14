@@ -1,0 +1,15 @@
+[project]
+name = "byoc-mnist"
+version = "0.1.0"
+description = "SageMaker BYOC (Bring Your Own Container) PyTorch MNIST example — custom Docker image on ECR"
+requires-python = ">=3.10,<3.13"
+
+# 로컬(내 노트북)에서만 필요한 의존성 — Job 제출/조회용.
+# torch 등 학습 프레임워크는 여기에 없습니다. 그건 container/Dockerfile 안에 설치됩니다.
+dependencies = [
+    "sagemaker>=3.0",
+    "boto3>=1.34",
+]
+
+[tool.uv]
+package = false
